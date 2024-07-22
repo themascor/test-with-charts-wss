@@ -1,0 +1,18 @@
+<form [formGroup]="fg">
+  <mat-form-field class="m-1">
+    <mat-label>Providers</mat-label>
+    <mat-select formControlName="providers">
+      @for (item of providerOptions(); track $index) {
+      <mat-option [value]="item">{{ item }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="m-1">
+    <mat-label>Instruments</mat-label>
+    <mat-select formControlName="instruments">
+      @for (item of instrumentOptions(); track item.id) {
+      <mat-option [value]="item.id">{{ item.description }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</form>

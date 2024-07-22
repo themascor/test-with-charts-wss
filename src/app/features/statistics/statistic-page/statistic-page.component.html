@@ -1,0 +1,59 @@
+<div class="px-20">
+
+  <!-- WIDGETS CONFIGURATION PANEL -->
+  <div class="text-right font-bold uppercase">Widgets configuration</div>
+  <form [formGroup]="fg"  class="flex justify-end" >
+    <ng-container 
+    [ngTemplateOutlet]="dropDownTemplate"
+    [ngTemplateOutletContext]="{ 
+      formControl: fg.get(routerOutletNames.selector),
+      options: dropDownOptions[routerOutletNames.selector],
+      label: routerOutletNames.selector
+    }">
+  </ng-container>
+  <ng-container 
+  [ngTemplateOutlet]="dropDownTemplate"
+  [ngTemplateOutletContext]="{ 
+    formControl: fg.get(routerOutletNames.summary),
+    options: dropDownOptions[routerOutletNames.summary],
+    label: routerOutletNames.summary
+  }">
+</ng-container>
+<ng-container 
+[ngTemplateOutlet]="dropDownTemplate"
+[ngTemplateOutletContext]="{ 
+  formControl: fg.get(routerOutletNames.chart),
+  options: dropDownOptions[routerOutletNames.chart],
+  label: routerOutletNames.chart
+}">
+</ng-container>
+</form>
+
+<!-- WIDGET PANEL -->
+<div class="mt-2">
+  <router-outlet [name]="routerOutletNames.selector"></router-outlet>
+</div>
+
+<div  class="mt-2">
+  <router-outlet  [name]="routerOutletNames.summary"></router-outlet>
+</div>
+
+<div  class="mt-2">
+  <router-outlet  [name]="routerOutletNames.chart"></router-outlet>
+</div>
+
+
+<!-- TEMPLATES -->
+
+  <ng-template #dropDownTemplate  let-formControl="formControl", let-options="options" let-label="label">
+    <mat-form-field class="m-2">
+      <mat-label>{{label}}</mat-label>
+      <mat-select [formControl]="formControl" >
+        @for (item of options; track $index) {
+        <mat-option [value]="item">{{item}}</mat-option>
+      }
+      </mat-select>
+    </mat-form-field>
+  </ng-template>
+
+  

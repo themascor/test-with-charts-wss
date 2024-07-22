@@ -1,0 +1,10 @@
+{
+  "/v1/**": {
+    "target": "https://platform.fintacharts.com",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/v1": ""
+    }
+  }
+}

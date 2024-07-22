@@ -1,0 +1,12 @@
+<div class="flex justify-center items-center w-full h-1/2">
+  @if (loading()) {
+  <mat-spinner diameter="24" class="mx-2"></mat-spinner> Obtaining token... }
+  @else if (success()) { 
+        <mat-icon class="my-5 text-green-600">check</mat-icon> <span class="text-green-600">Success. Redirecting...</span>   
+  } @else {
+    <div class="flex justify-center items-center flex-wrap">
+        <div class="w-full text-center my-2 text-red-300">Cant obtaining the token.</div>
+        <button mat-flat-button>Retry</button>
+   </div>
+  }
+</div>

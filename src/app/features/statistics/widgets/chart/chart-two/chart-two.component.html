@@ -1,0 +1,19 @@
+<div class="block">
+    @if (isChartData()) {
+    <canvas
+      baseChart
+      width="1200"
+      height="600"
+      [type]="'line'"
+      [data]="lineChartData()"
+      [options]="lineChartOptions"
+      [legend]="lineChartLegend"
+    >
+    </canvas>
+    } @else  {
+      <div class="border w-96 h-24 flex justify-center items-center text-gray-300">
+        <mat-icon>query_stats</mat-icon>
+      </div>
+    }
+  </div>
+  

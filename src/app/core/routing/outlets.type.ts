@@ -1,0 +1,5 @@
+export enum ROUTER_OUTLETS  {
+    SELECTOR = "SELECTOR",
+    SUMMARY =  "SUMMARY",
+    CHART = "CHART",
+}

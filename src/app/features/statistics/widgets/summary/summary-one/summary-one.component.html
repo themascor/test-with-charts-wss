@@ -1,0 +1,52 @@
+
+@if (data() !== null) {
+<div class="flex">
+  <ng-container
+    [ngTemplateOutlet]="summaryCard"
+    [ngTemplateOutletContext]="{
+      summary: ask(),
+      title: 'ASK'
+    }"
+  >
+  </ng-container>
+  <ng-container
+    [ngTemplateOutlet]="summaryCard"
+    [ngTemplateOutletContext]="{
+      summary: bid(),
+      title: 'BID'
+    }"
+  >
+  </ng-container>
+  <ng-container
+    [ngTemplateOutlet]="summaryCard"
+    [ngTemplateOutletContext]="{
+      summary: last(),
+      title: 'LAST'
+    }"
+  >
+  </ng-container>
+</div>
+} @else { 
+    <div class="border w-96 flex justify-center items-center text-gray-300 h-24">
+      <mat-icon>view_agenda</mat-icon>
+    </div>
+ }
+
+<ng-template #summaryCard let-summary="summary" let-title="title">
+  <mat-card *ngIf="summary" appearance="outlined" class="text p-2 m-5 w-96">
+    <mat-card-header>
+      <mat-card-title
+        ><p class="text-pink-300">{{ title }}</p></mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <p class="text-pink-50">{{ summary?.price }}</p>
+    </mat-card-content>
+    <mat-card-footer class="pt-3">
+      <mat-chip-set>
+        <mat-chip>{{ summary?.timestamp | date:'medium' }}</mat-chip>
+        <mat-chip>{{ summary?.volume }}</mat-chip>
+      </mat-chip-set>
+    </mat-card-footer>
+  </mat-card>
+</ng-template>
